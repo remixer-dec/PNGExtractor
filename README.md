@@ -1,5 +1,6 @@
 # PNGExtractor
-finds PNG images in other files 
-written on javascript
+Finds PNG images in other files.
+
+Written on javascript
 
 https://remixer-dec.github.io/PNGExtractor
