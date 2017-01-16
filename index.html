@@ -2,11 +2,23 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Testing some stuff</title>
+	<title>PNG Image Extractor</title>
+	<link rel="stylesheet" href="https://cdn.rawgit.com/skidding/obvious-buttons/master/src/obvious-buttons.css">
+	<style>
+	.btn{margin:10px;width:400px;padding:6px;cursor:pointer;display:inline-block}input[type=file]{display:none}#images img{padding:2px}.box{animation:zoom ease-in-out 3s;animation-iteration-count:1;transform-origin:50% 50%;border-radius:40%}.box:hover{animation:zoom ease-in-out .8s infinite} body{border:10px solid #eee;padding:20px;font-family:'Roboto',Open Sans, PT Sans, sans-serif;border-radius: 20px; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.32)}@keyframes zoom{0%,100%,69%{transform:scaleX(1) scaleY(1)}42%{transform:scaleX(1.04) scaleY(1.04)}}
+	</style>
 </head>
-<body background="#444" color="fff">
-	xD	<input type='file' id='fileinput' onchange="fileselected()">
-		<div id="images"></div>
+<body>
+<center>
+<h4>This tool can help you with getting sprites from old j2me-games and other pngs from .pak'ed files.</h4>
+<h5>supported only in modern browsers</h5>
+	<img class="box" width="300" height="300" src="http://www.freeiconspng.com/uploads/archive-icon-2.jpg"><br>
+	<label for="fileinput" class="btn">
+    	Select File
+	</label>
+	<input type='file' id='fileinput' onchange="fileselected()">
+	<div id="images"></div>
+	</center>
 	<script>
 	var fileselected = () => {
 		var reader = new FileReader();
@@ -20,7 +32,7 @@
 			}
 			if(data.match(/(89504e47.*000049454e44ae)/)!=null){
 				let imgs = data.match(/(89504e47.+?000049454e44ae426082)/gm);
-				for(let i=1,l=imgs.length;i<l;i++){
+				for(let i=0,l=imgs.length;i<l;i++){
 					let png = imgs[i];
 					png += png.length%2!=0?"0":"";
 					let byteArray = new Uint8Array(png.length/2);
